@@ -1,5 +1,5 @@
 """
-@module foodstate.food_contracts
+@module foodstate.food_contracts_basis
 
 fsp-0 — the property-domain CONTRACTS as data (the fam-1 shell
 pattern): what a fully-described FoodState must be able to answer,
@@ -24,7 +24,7 @@ values), so no new per-quantity class exists and none should.
 @consumers
   - polariServer.defClassList (auto-CRUDE + persistence + seeds)
   - foodstate.food_api (GET /api/foodstate/contracts)
-  - foodstate.selftest_foodstate
+  - foodstate.foodstate_selftest
 """
 
 import json

@@ -1,5 +1,5 @@
 """
-@module foodstate.food_chemistry
+@module foodstate.custom.food_chemistry
 
 fsp-3 (first slice) — the chemistry-domain engines, cited-constants
 only (MEAL_PLANNING_APP_PLAN follow-on; FOOD_STATE_PSPP_PLAN §4
@@ -30,7 +30,7 @@ pKa provenance (verified this session, 2026-09-01):
 
 @consumers
   - foodstate.food_api (chemistry routes)
-  - foodstate.selftest_food_chemistry
+  - foodstate.food_chemistry_selftest
 """
 
 _VERIFIED = 'verified 2026-09-01 against the cited source'

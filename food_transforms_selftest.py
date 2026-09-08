@@ -6,25 +6,25 @@ and the template chain's per-meal amounts AGREE with the nmp-4
 rollup (two-modules-agree guard).
 
 Run from polari-framework/modules/:
-  PYTHONPATH=..:../polariApiServer python3 -m foodstate.selftest_food_transforms
+  PYTHONPATH=..:../polariApiServer python3 -m foodstate.food_transforms_selftest
 """
 
 import json
 from types import SimpleNamespace
 
-from foodstate.food_composition import (
+from foodstate.custom.food_composition import (
     build_composition_claim_seeds, vendor_food_index,
 )
-from foodstate.food_materials import build_food_material_seeds
+from foodstate.food_materials_basis import build_food_material_seeds
 from foodstate.food_pspp_seed import SEED_FOOD_PROCESSES
-from foodstate.food_transforms import (
+from foodstate.custom.food_transforms import (
     apply_transform, derive_mix, derive_transform,
     template_state_chain,
 )
 from nutrition.fdc_seed import (SEED_FDC_FOOD_ITEMS,
                                 SEED_FDC_NUTRIENT_CONTENTS)
 from nutrition.meal_basis import SEED_MEAL_TEMPLATES, SEED_VARIATIONS
-from nutrition.meal_analysis import template_rollup
+from nutrition.custom.meal_analysis import template_rollup
 from nutrition.nutrient_seed import SEED_DIETARY_NUTRIENTS
 from nutrition.recipe_basis import SEED_INGREDIENT_LINES, SEED_RECIPES
 

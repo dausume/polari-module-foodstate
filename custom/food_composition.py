@@ -1,5 +1,5 @@
 """
-@module foodstate.food_composition
+@module foodstate.custom.food_composition
 
 fsp-1 — composition CLAIMS on the canonical states, built from the
 vendored FDC subset (CC0, sha-pinned, values verbatim — see
@@ -24,14 +24,14 @@ and visible), it never fills them.
 @consumers
   - polariServer (PropertyClaim seed concat + FoodMaterial seeds)
   - foodstate.food_api (ingredients endpoints)
-  - foodstate.selftest_food_materials
+  - foodstate.food_materials_selftest
 """
 
 import csv
 import json
 import os
 
-_VENDOR = os.path.join(os.path.dirname(__file__), '..', 'nutrition',
+_VENDOR = os.path.join(os.path.dirname(os.path.dirname(__file__)), '..', 'nutrition',
                        'vendor', 'fdc_foundation_subset.csv')
 _VENDOR_SHA = ('c0a9360747fc820fba2f14fd39e59c45e8eeeadf2a50a84dda'
                '77d82393808886')

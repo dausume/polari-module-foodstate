@@ -4,14 +4,14 @@ vocabulary + domain contracts as data, riding the pspp core with
 ZERO pspp schema changes — the pspp-11 generality proof.
 
 Run from polari-framework/modules/:
-  PYTHONPATH=..:../polariApiServer python3 -m foodstate.selftest_foodstate
+  PYTHONPATH=..:../polariApiServer python3 -m foodstate.foodstate_selftest
 """
 
 import json
 import sys
 import types
 
-from foodstate.food_contracts import (
+from foodstate.food_contracts_basis import (
     SEED_FOOD_DOMAIN_CONTRACTS, FoodDomainContract, contracts_report,
 )
 from foodstate.food_pspp_seed import (
@@ -49,11 +49,11 @@ def _mgr():
 
 def main():
     # ---- zero-schema-change proof --------------------------------
-    from pspp.material_states import ProcessingStage
-    from pspp.material_processes import (
+    from pspp.material_states_basis import ProcessingStage
+    from pspp.material_processes_basis import (
         EXECUTION_EFFECTS, MaterialProcessDefinition,
     )
-    from pspp.evidence_methods import EvidenceMethod
+    from pspp.evidence_methods_basis import EvidenceMethod
     check('generality proof: every food stage/process/method seed '
           'CONSTRUCTS the unmodified pspp class it targets (zero '
           'pspp schema changes)',

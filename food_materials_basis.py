@@ -1,5 +1,5 @@
 """
-@module foodstate.food_materials
+@module foodstate.food_materials_basis
 
 fsp-1 — the COMMON-BASE-INGREDIENTS roster (Dustin 2026-09-01:
 "start putting together a database of common base ingredients").
@@ -21,8 +21,8 @@ claims land on the canonical subject '<name>#as-defined'
 
 @consumers
   - polariServer.defClassList (auto-CRUDE + persistence + seeds)
-  - foodstate.food_composition (claims + coverage)
-  - foodstate.selftest_food_materials
+  - foodstate.custom.food_composition (claims + coverage)
+  - foodstate.food_materials_selftest
 """
 
 from objectTreeDecorators import treeObject, treeObjectInit

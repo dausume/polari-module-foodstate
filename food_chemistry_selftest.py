@@ -8,21 +8,21 @@ concentrates citric by exactly the stated mass ratio, and
 speciation at a measured pH answers the state-184-style question.
 
 Run from polari-framework/modules/:
-  PYTHONPATH=..:../polariApiServer python3 -m foodstate.selftest_food_chemistry
+  PYTHONPATH=..:../polariApiServer python3 -m foodstate.food_chemistry_selftest
 """
 
 import json
 from types import SimpleNamespace
 
 from foodstate.food_acid_seed import SEED_FOOD_ACID_CLAIMS
-from foodstate.food_chemistry import (
+from foodstate.custom.food_chemistry import (
     CITED_PKA, buffer_capacity, ingredient_acidity, speciation,
     titratable_acidity,
 )
-from foodstate.food_composition import build_composition_claim_seeds
+from foodstate.custom.food_composition import build_composition_claim_seeds
 from foodstate.food_ph_seed import SEED_FOOD_PH_CLAIMS
 from foodstate.food_pspp_seed import SEED_FOOD_PROCESSES
-from foodstate.food_transforms import derive_transform
+from foodstate.custom.food_transforms import derive_transform
 
 _results = []
 

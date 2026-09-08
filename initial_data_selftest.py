@@ -7,14 +7,14 @@ json_seeds loader enforces, and rows must carry the constructor
 kwargs the classes accept.
 
 Run from polari-framework/modules/:
-  PYTHONPATH=..:../polariApiServer python3 -m foodstate.selftest_initial_data
+  PYTHONPATH=..:../polariApiServer python3 -m foodstate.initial_data_selftest
 """
 
 import inspect
 import json
 import os
 
-from foodstate.export_initial_data import (DATA_DIR, build_payloads,
+from foodstate.custom.export_initial_data import (DATA_DIR, build_payloads,
                                            render)
 
 _results = []
@@ -49,19 +49,19 @@ for filename, payload in sorted(payloads.items()):
     path = os.path.join(DATA_DIR, filename)
     if not os.path.exists(path):
         check(f'{filename}: committed file exists', False,
-              'run python3 -m foodstate.export_initial_data')
+              'run python3 -m foodstate.custom.export_initial_data')
         continue
     with open(path, encoding='utf-8') as f:
         on_disk = f.read()
     check(f'{filename}: committed file MATCHES the builders '
           f'(drift guard)',
           on_disk == render(payload),
-          'regenerate: python3 -m foodstate.export_initial_data')
+          'regenerate: python3 -m foodstate.custom.export_initial_data')
 
 # constructor-kwarg agreement (the json_seeds loader passes rows as
 # constructor kwargs — a renamed field would seed nothing, silently)
-from foodstate.food_materials import FoodMaterial
-from pspp.claims import PropertyClaim
+from foodstate.food_materials_basis import FoodMaterial
+from pspp.claims_basis import PropertyClaim
 for cls, filename in ((FoodMaterial, 'FoodMaterial.json'),
                       (PropertyClaim, 'PropertyClaim.json')):
     params = set(inspect.signature(cls.__init__).parameters)

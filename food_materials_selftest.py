@@ -5,18 +5,18 @@ claims with full citation provenance, coverage honesty (contract
 gaps NAMED, never filled).
 
 Run from polari-framework/modules/:
-  PYTHONPATH=..:../polariApiServer python3 -m foodstate.selftest_food_materials
+  PYTHONPATH=..:../polariApiServer python3 -m foodstate.food_materials_selftest
 """
 
 import json
 import sys
 import types
 
-from foodstate.food_composition import (
+from foodstate.custom.food_composition import (
     CONTRACT_GAPS, build_composition_claim_seeds, ingredient_report,
     vendor_food_index,
 )
-from foodstate.food_materials import (
+from foodstate.food_materials_basis import (
     ROSTER, ROSTER_CATEGORIES, FoodMaterial,
     build_food_material_seeds,
 )

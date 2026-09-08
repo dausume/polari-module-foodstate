@@ -1,5 +1,5 @@
 """
-@module foodstate.food_transforms
+@module foodstate.custom.food_transforms
 
 fsp-2 / mpa-0 — the transform engine v1 (MEAL_PLANNING_APP_PLAN.md):
 derive a NEW FoodState from a stated transform, writing UNDERLYING
@@ -21,18 +21,18 @@ implemented rungs:
 Everything here is PURE COMPUTE over manager tables and returns seed
 rows (MaterialState / MaterialProcessExecution / PropertyClaim on
 pspp's own classes — zero schema changes); `apply_transform`
-persists via composition.seed_upsert (derive-on-demand + cached, D5
+persists via composition.custom.seed_upsert (derive-on-demand + cached, D5
 — never a boot-seeded state explosion).
 
 @consumers
   - foodstate.food_api (fsp-2 endpoints), nutrition meal-state seam
-  - foodstate.selftest_food_transforms
+  - foodstate.food_transforms_selftest
 @see AI-Notes/plans/MEAL_PLANNING_APP_PLAN.md §mpa-0
 """
 
 import json
 
-from nutrition.recipe_analysis import (
+from nutrition.custom.recipe_analysis import (
     R6_CODE_BY_NUTRIENT, retention_description, retention_rows,
 )
 
@@ -525,10 +525,10 @@ def apply_transform(manager, derived):
         return {'ok': False, 'error': 'refusing to persist a '
                                       'non-ok derivation'}
     try:
-        from composition.seed_upsert import upsert_seed_pairs
-        from pspp.material_states import MaterialState
-        from pspp.material_processes import MaterialProcessExecution
-        from pspp.claims import PropertyClaim
+        from composition.custom.seed_upsert import upsert_seed_pairs
+        from pspp.material_states_basis import MaterialState
+        from pspp.material_processes_basis import MaterialProcessExecution
+        from pspp.claims_basis import PropertyClaim
     except ImportError as exc:
         return {'ok': False, 'persisted': False,
                 'error': f'persistence path unavailable ({exc}) — '
